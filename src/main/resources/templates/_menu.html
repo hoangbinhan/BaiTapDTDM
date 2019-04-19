@@ -1,0 +1,30 @@
+<div class="menu-container"
+   xmlns:th="http://www.thymeleaf.org"
+   xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" >
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+   <a th:href="@{/}"><i style="color: #ff4930" class="fas fa-home"></i>Home</a>
+   |
+   <a th:href="@{/productList}">
+      <i style="color: #ff4930" class="far fa-list-alt"></i>Product List
+   </a>
+   |
+   <a th:href="@{/shoppingCart}">
+      <i style="color: #ff4930" class="fas fa-cart-plus"></i>My Cart
+   </a>
+   |
+   <th:block sec:authorize="hasAnyRole('ROLE_MANAGER','ROLE_EMPLOYEE')">
+      <a th:href="@{/admin/orderList}">
+         <i style="color: #ff4930" class="fas fa-hands"></i>Order List
+      </a>
+      |
+   </th:block>
+   <th:block sec:authorize="hasRole('ROLE_MANAGER')">
+      <a th:href="@{/admin/product}">
+         <i style="color: #ff4930" class="far fa-plus-square"></i> Create Product
+      </a>
+      |
+
+   </th:block>
+
+</div>
